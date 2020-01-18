@@ -1,0 +1,78 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	    int[] arr = {2,5,8,45,67,76,88,76,2000,12,34,90};
+	    int[] arr2 = {2,5,8,45,67,76,88,76,2000,12,34,90};
+	  
+	    
+	    System.out.println("Recursive call ");
+	      bubbleRecursive(arr , 0 , arr.length -1);
+	    for(int val : arr){
+	        System.out.print(val + "  ");
+	    }
+	    
+	    System.out.println();
+	    
+	  
+	    System.out.println("Iterative call ");
+	      bubbleIterative(arr2 , 0 , arr2.length -1);
+	    for(int val1 : arr2){
+	        System.out.print(val1 + "  ");
+	    }
+	}
+	
+	public static void bubbleRecursive(int[] arr, int s , int e){
+	    
+	    // bubble sort using reccursion
+	    
+	    // when the end pointer becomes zero their is nothing to compare with exit
+	    if( e == 0){
+	        return;
+	    }
+	    
+	    // when one journey is completed than reinitailise pointers
+	    if( s == e){
+	        s = 0;
+	        e = e-1;
+	        bubbleRecursive(arr,s,e);
+	        return;
+	    }
+	    
+	    
+	    // for swapping the smaller no. with the larger no.
+	    if(arr[s] > arr[s+1])
+	    {
+	                int temp = arr[s];
+	                arr[s] = arr[s+1];
+	                arr[s+1] = temp;
+	            
+	    }
+	        
+	                bubbleRecursive(arr,s+1,e);
+	    
+	    
+	}
+	
+	public static void bubbleIterative(int[] arr, int s , int e){
+	    // bubble sort using iteration
+	    
+	    for(int i = s ; i <= e ; i++){
+	        for(int j = i+1; j<=e ; j++){
+	            if(arr[i]>arr[j]){
+	                int temp = arr[i];
+	                arr[i] = arr[j];
+	                arr[j] = temp;
+	            }
+	        }
+	    }
+	    
+	   	}
+}
