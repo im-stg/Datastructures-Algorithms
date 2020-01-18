@@ -1,0 +1,70 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		int[] a = {6,8,23,67,22,56,34,90,78,29,44,44,77,809}; 
+		
+		int[] sorted = mergedsort(a,0,a.length-1);
+		for(int i = 0; i< sorted.length; i++){
+		    System.out.print(sorted[i] + "  ");
+		}
+		
+	}
+	
+	private static int[] mergedsort(int[] a , int l , int h){
+	    int m = (l+h)/2;
+	    
+	    if(l == h){
+	        int t[] = new int[1];
+	        t[0] = a[l];
+	        return t;
+	    }
+	    
+	    int[] fh = mergedsort(a,l,m);
+	    int[] sh = mergedsort(a,m+1,h);
+	    int[] sorted = merge(fh,sh);
+	    
+	    return sorted;
+	    
+	    
+	}
+	
+	private static int[] merge(int[] a, int[] b){
+	    int i=0,j=0,k=0;
+	    int[] merged = new int[a.length + b.length];
+	    
+	    while(i < a.length && j < b.length){
+	        if(a[i]<b[j]){
+	        merged[k] = a[i];
+	        i++;
+	        k++;
+	        }else {
+	            merged[k] = b[j];
+	            j++;
+	            k++;
+	        }
+	    }
+	    
+	    while(i<a.length){
+	         merged[k] = a[i];
+	        i++;
+	        k++;
+	    }
+	    
+	    while(j<b.length){
+	         merged[k] = b[j];
+	            j++;
+	            k++;
+	    }
+	    
+	    return merged;
+	    
+	}
+}
